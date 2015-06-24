@@ -17,20 +17,18 @@ import java.util.Vector;
  */
 public class QueryProcess {
     
-    public ResultSet Process(Connection dbcon, String gql) throws SQLException {
-        ResultSet res;
+    public String Process(String gql) throws SQLException {
+        ResultSet res = null;
         if (gql.contains("SELECT")) {
-            String mysqlQuery = selectquery(gql);            
-            Statement st = dbcon.createStatement();
-            res = st.executeQuery(mysqlQuery);
-            return res;
-        } else if (gql.contains("INSERT")) {
-            Statement st = dbcon.createStatement();
-            res = st.executeQuery(gql);
-            return res;
-        } 
+            String mysqlQuery = selectquery(gql);      
+            return mysqlQuery;
+        } else if (gql.contains("DELETE")) {
+            String mysqlQuery = deletequery(gql);
+            return mysqlQuery;
+        }
         //String[] splitedGQL = gql.split(" ");
-        
+
+      return "failed";
     }
 
     public void processArrow(String arrowStatement, Vector<String[]> _values)
@@ -107,6 +105,45 @@ public class QueryProcess {
         
     }
     
+    public String removerow(Vector<String[]> _values, String _from) throws SQLException
+    {
+        String subquery = "";
+        
+        for(int i = 0; i < _values.size() + 1; i++)
+        {
+            if(_from.equals("vertices"))
+            {
+                if(i == 0)
+                {
+                    subquery = "DELETE FROM vertices WHERE vid = " +  _values.get(i)[0];
+                }
+                else if(0 < i && i < _values.size())
+                {
+                    subquery += " OR vid = " +  _values.get(i)[0];
+                }
+                else if(i == _values.size())
+                {
+                    subquery += " OR vid = " +  _values.get(i - 1)[1];
+                }
+            }
+            else if(_from.equals("edges"))
+            {
+                if(i == 0)
+                {
+                    subquery = "DELETE FROM edges WHERE efrom = " +  _values.get(i)[0] + " OR eto = " + _values.get(i)[0];
+                }
+                else if(0 < i && i < _values.size())
+                {
+                    subquery += " OR efrom = " +  _values.get(i)[0] + " OR eto = " + _values.get(i)[0];
+                }/*
+                else if(i == _values.size())
+                {
+                    subquery +=*/
+            }
+        }
+        
+        return subquery;
+    }
     
     public String selectquery(String query) {
         Vector<String[]> values = new Vector<String[]>();
@@ -163,14 +200,36 @@ public class QueryProcess {
         }
 
     }
-    
-    
+
+    public String deletequery(String query) throws SQLException {
+        Vector<String[]> values = new Vector<String[]>();
+        String from = "";
+        String where = "";
+        String dquery = "";
+        int cnt = 0;
+
+        if (query.contains("->")) {
+            from = query.substring(query.indexOf("FROM") + 4, query.indexOf("WHERE"));
+            from = from.replaceAll("\\s+", "");
+            
+            where = query.substring(query.indexOf("WHERE") + 5, query.length());
+            where = where.replaceAll("\\s+", "");
+
+            savevalue(where, values);
+            
+            return removerow(values, from);
+            
+        } else {
+            return query;
+        }
+    }
+    /*
     public String insertquery(String query) {
         if(query.contains("->")) {
             
         }else {
             return query;
         }
-    }
+    }*/
     
 }
