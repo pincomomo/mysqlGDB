@@ -4,7 +4,7 @@
     * 기존 데이터 베이스를 확장하지 않고 그대로 사용하면서 그래프를 저장할 수 있는 라이브러리 
     * 직관도 높은 기호를 사용하는 쿼리 정의
     * 정의 된 쿼리의 INSERT , FROM , SELECT , WHERE 등 특정 구문 이후에 오는 쿼리의 일부분을 MySql에 맞게 처리함 
-    * 노드간 관계 표현 쿼리 구조 '->' 사용, 
+    * 노드간 관계 표현 쿼리 기호 '->' 사용, 
     *    Example Query:            SELECT egid FROM edges WHERE 1->2->3 AND 4->5 AND 6->7->8
     *    Proccessed MySql Query :<br> 
          SELECT jt1.egid<br> 
