@@ -10,9 +10,9 @@
 
 #### Example Query: SELECT egid FROM edges WHERE 1->2->3 AND 4->5 AND 6->7->8
 ```vim
-        Proccessed MySql Query :<br> 
-         SELECT jt1.egid<br> 
-         FROM edges jt1 <br>
+        Proccessed MySql Query :
+         SELECT jt1.egid
+         FROM edges jt1 
          INNER JOIN edges jt2 ON jt1.egid = jt2.egid 
          INNER JOIN edges jt3 ON jt1.egid = jt3.egid 
          INNER JOIN edges jt4 ON jt1.egid = jt4.egid 
