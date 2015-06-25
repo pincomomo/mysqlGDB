@@ -52,6 +52,18 @@
 * Graph를 잇는 엣지
 
 
+#### API
+
+| Class           | Function             | 기능        |
+| ----------------|----------------------|------------ |
+| QueryProcess    | `Process(String gql)` | 라이브러리에서 제공하는 특화된 쿼리 언어를 MySql 쿼리로 번역함 |
+| QueryProcess    | `processArrow(String arrowStatement, Vector<String[]> _values)`| 특화된 쿼리문에서 -> 에 대한 분할작업을 하여 edge의 from과 to 값을 벡터에 저장한다 |
+| QueryProcess    | `andProcess(String query, Vector<String[]> _values)`| 특화된 쿼리문에서 AND가 있을 경우에 대한 처리|
+| QueryProcess    | `removerow(Vector<String[]> _values, String _from)` | DELETE 쿼리문에서 WHERE에 특화된 쿼리가 있을 시 WHERE절에 대한 처리|
+| QueryProcess    | `selectquery(String query)` | SELECT 쿼리문 생성|
+| QueryProcess    | `deletequery(String query)` | DELETE 쿼리문 생성|
+| Graph         | `toQuery()`               | 그래프 자료구조를 쿼리에 append 할 수 있도록 스트링 구조로 반환|
+
 
 ####팀원 역할
 
