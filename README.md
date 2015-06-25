@@ -13,15 +13,15 @@
         Proccessed MySql Query :<br> 
          SELECT jt1.egid<br> 
          FROM edges jt1 <br>
-         INNER JOIN edges jt2 ON jt1.egid = jt2.egid <br>
-         INNER JOIN edges jt3 ON jt1.egid = jt3.egid <br>
-         INNER JOIN edges jt4 ON jt1.egid = jt4.egid <br>
-         INNER JOIN edges jt5 ON jt1.egid = jt5.egid <br>
-         AND jt1.efrom = 1 AND jt1.eto = 2 <br>
-         AND jt2.efrom = 2 AND jt2.eto = 3 <br>
-         AND jt3.efrom = 4 AND jt3.eto = 5 <br>
-         AND jt4.efrom = 6 AND jt4.eto = 7 <br>
-         AND jt5.efrom = 7 AND jt5.eto = 8 <br>
+         INNER JOIN edges jt2 ON jt1.egid = jt2.egid 
+         INNER JOIN edges jt3 ON jt1.egid = jt3.egid 
+         INNER JOIN edges jt4 ON jt1.egid = jt4.egid 
+         INNER JOIN edges jt5 ON jt1.egid = jt5.egid 
+         AND jt1.efrom = 1 AND jt1.eto = 2 
+         AND jt2.efrom = 2 AND jt2.eto = 3 
+         AND jt3.efrom = 4 AND jt3.eto = 5 
+         AND jt4.efrom = 6 AND jt4.eto = 7 
+         AND jt5.efrom = 7 AND jt5.eto = 8 
 ```
 
 ####팀원 역할
