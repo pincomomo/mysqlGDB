@@ -62,8 +62,9 @@
 | QueryProcess    | `removerow(Vector<String[]> _values, String _from)` | DELETE 쿼리문에서 WHERE에 특화된 쿼리가 있을 시 WHERE절에 대한 처리|
 | QueryProcess    | `selectquery(String query)` | SELECT 쿼리문 생성|
 | QueryProcess    | `deletequery(String query)` | DELETE 쿼리문 생성|
-| Graph         | `toQuery()`               | 그래프 자료구조를 쿼리에 append 할 수 있도록 스트링 구조로 반환|
-
+|
+<h6>Graph</h6>  
+| `toQuery()`               | 그래프 자료구조를 쿼리에 append 할 수 있도록 스트링 구조로 반환|
 
 ####팀원 역할
 
